@@ -797,3 +797,58 @@
         font-size: 0.8rem;
     }
 }
+
+@media (min-width: 981px) {
+    .services-overview__card--photo {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .services-overview__content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 4;
+
+        display: grid;
+        gap: 10px;
+        padding: clamp(24px, 2.4vw, 34px);
+
+        transform: translateY(calc(100% + 48px));
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 460ms ease,
+            opacity 280ms ease,
+            visibility 280ms ease;
+    }
+
+    .services-overview__card--photo:hover .services-overview__content,
+    .services-overview__card--photo:focus-visible .services-overview__content,
+    .services-overview__card--photo:focus-within .services-overview__content {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .services-overview__content strong,
+    .services-overview__content span,
+    .services-overview__content em {
+        display: block;
+    }
+
+    .services-overview__overlay {
+        opacity: 0.18;
+        transition: opacity 340ms ease;
+    }
+
+    .services-overview__card--photo:hover .services-overview__overlay,
+    .services-overview__card--photo:focus-visible .services-overview__overlay,
+    .services-overview__card--photo:focus-within .services-overview__overlay {
+        opacity: 0.62;
+    }
+}
