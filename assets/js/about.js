@@ -128,6 +128,51 @@
         });
     })();
 
+    (function initAboutProblemsSwiper() {
+        const swiperEl = document.querySelector('[data-problems-swiper]');
+
+        if (!swiperEl || typeof Swiper === 'undefined') {
+            return;
+        }
+
+        new Swiper(swiperEl, {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 18,
+            speed: 650,
+            loop: true,
+            grabCursor: true,
+            pagination: {
+                el: '[data-problems-pagination]',
+                clickable: true
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 14
+                },
+                760: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 18
+                }
+            },
+            on: {
+                init() {
+                    if (window.lucide) {
+                        window.lucide.createIcons();
+                    }
+                },
+                slideChangeTransitionEnd() {
+                    if (window.lucide) {
+                        window.lucide.createIcons();
+                    }
+                }
+            }
+        });
+    })();
+
     function init() {
         initAboutFaqSchema();
         initAboutHoverMotion();
