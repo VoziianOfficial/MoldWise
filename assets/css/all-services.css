@@ -1074,3 +1074,274 @@
         max-width: 100%;
     }
 }
+
+ /* ==================================================
+   Problem Selector — section background layout, not card
+   ================================================== */
+
+ .problem-selector {
+     position: relative;
+     overflow: hidden;
+     background: var(--color-primary-deep);
+ }
+
+ .problem-selector::before {
+     content: "";
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: clamp(160px, 18vw, 240px);
+     height: 1px;
+     background: rgba(255, 255, 255, 0.12);
+     pointer-events: none;
+ }
+
+ .problem-selector .container-wide {
+     position: relative;
+     z-index: 2;
+ }
+
+ /* убираем вид карточки у dynamic panel */
+ .problem-selector__panel.shine-surface,
+ .problem-selector__panel {
+     position: relative;
+     display: grid;
+     grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+     gap: clamp(34px, 6vw, 92px);
+     align-items: center;
+
+     padding: clamp(24px, 4vw, 54px) 0 0;
+     border: 0;
+     border-radius: 0;
+     background: transparent;
+     box-shadow: none;
+     overflow: visible;
+
+     transition:
+         opacity var(--transition-base),
+         transform var(--transition-base);
+ }
+
+ /* отключаем shine/карточный эффект, если он приходит от global */
+ .problem-selector__panel.shine-surface::before,
+ .problem-selector__panel.shine-surface::after {
+     display: none;
+ }
+
+ .problem-selector__panel:hover {
+     border-color: transparent;
+ }
+
+ .problem-selector__panel.is-changing {
+     opacity: 0.72;
+     transform: translateY(6px);
+ }
+
+ /* контент как часть секции */
+ .problem-selector__content {
+     position: relative;
+     min-width: 0;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     padding-right: clamp(16px, 3vw, 42px);
+ }
+
+ .problem-selector__content::before {
+     content: "";
+     position: absolute;
+     left: 0;
+     top: -24px;
+     width: 92px;
+     height: 3px;
+     border-radius: var(--radius-pill);
+     background: var(--color-accent-green);
+ }
+
+ .problem-selector__content::after {
+     content: "";
+     position: absolute;
+     left: 112px;
+     top: -23px;
+     width: 42px;
+     height: 2px;
+     border-radius: var(--radius-pill);
+     background: var(--color-accent-orange);
+ }
+
+ .problem-selector__icon {
+     align-self: flex-start;
+     margin-bottom: 18px;
+     color: rgba(143, 191, 174, 0.66);
+     filter: none;
+ }
+
+ .problem-selector__icon svg {
+     width: clamp(62px, 7vw, 98px);
+     height: clamp(62px, 7vw, 98px);
+     stroke-width: 1.18;
+ }
+
+ .problem-selector__panel:hover .problem-selector__icon {
+     color: var(--color-accent-orange);
+     transform: translateY(-5px) rotate(-6deg);
+ }
+
+ .problem-selector__content h3 {
+     max-width: 740px;
+     margin-top: 2px;
+     color: var(--color-text-light);
+     font-size: clamp(2rem, 4.2vw, 4.25rem);
+     line-height: 1.02;
+     text-shadow: 0 22px 48px rgba(0, 0, 0, 0.32);
+ }
+
+ .problem-selector__content>p:not(.section-kicker) {
+     max-width: 680px;
+     margin-top: 16px;
+     color: rgba(247, 250, 249, 0.76);
+     font-size: clamp(1rem, 1.1vw, 1.08rem);
+ }
+
+ /* detail/next теперь не карточки, а строки на фоне секции */
+ .problem-selector__detail,
+ .problem-selector__next {
+     width: min(100%, 720px);
+     margin-top: 22px;
+     padding: 18px 0 0;
+     border-top: 1px solid rgba(255, 255, 255, 0.15);
+     background: transparent;
+ }
+
+ .problem-selector__detail strong,
+ .problem-selector__next strong {
+     margin-bottom: 9px;
+ }
+
+ .problem-selector__detail p,
+ .problem-selector__next p {
+     max-width: 680px;
+     color: rgba(247, 250, 249, 0.72);
+ }
+
+ /* фото тоже не карточка: просто визуальный пласт внутри секции */
+ .problem-selector__photo {
+     position: relative;
+     min-height: clamp(420px, 42vw, 620px);
+     border: 0;
+     border-radius: 0;
+     overflow: hidden;
+     box-shadow: none;
+ }
+
+ .problem-selector__photo::before {
+     content: "";
+     position: absolute;
+     inset: 0;
+     z-index: 2;
+     background: rgba(0, 0, 0, 0.28);
+     pointer-events: none;
+ }
+
+ .problem-selector__photo::after {
+     content: "";
+     position: absolute;
+     left: -1px;
+     top: 0;
+     bottom: 0;
+     z-index: 3;
+     width: 1px;
+     background: rgba(255, 255, 255, 0.18);
+     pointer-events: none;
+ }
+
+ .problem-selector__photo img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transform: scale(1.02);
+     transition: transform 760ms ease;
+ }
+
+ .problem-selector__panel:hover .problem-selector__photo img {
+     transform: scale(1.08);
+ }
+
+ /* кнопки-табы пусть остаются сверху и листаются */
+ .problem-selector__tabs {
+     position: relative;
+     z-index: 5;
+     margin-bottom: clamp(18px, 3vw, 34px);
+ }
+
+ /* адаптив */
+ @media (max-width: 1180px) {
+
+     .problem-selector__panel.shine-surface,
+     .problem-selector__panel {
+         grid-template-columns: 1fr;
+         gap: 34px;
+     }
+
+     .problem-selector__content {
+         padding-right: 0;
+     }
+
+     .problem-selector__photo {
+         min-height: 380px;
+     }
+ }
+
+ @media (max-width: 720px) {
+
+     .problem-selector__panel.shine-surface,
+     .problem-selector__panel {
+         padding-top: 30px;
+     }
+
+     .problem-selector__content h3 {
+         font-size: clamp(1.85rem, 9vw, 2.8rem);
+     }
+
+     .problem-selector__photo {
+         min-height: 310px;
+     }
+ }
+
+ @media (max-width: 420px) {
+     .problem-selector__photo {
+         min-height: 260px;
+     }
+ }
+
+ .problem-selector__photo {
+     border-radius: 24px;
+     overflow: hidden;
+ }
+
+ .problem-selector__photo img {
+     border-radius: inherit;
+ }
+
+ .problem-selector__photo {
+     border-radius: 18px;
+     overflow: hidden;
+ }
+
+ .problem-selector__content h3[data-problem-title] {
+     max-width: 700px;
+     font-size: clamp(1.75rem, 3.4vw, 3.45rem);
+     line-height: 1.04;
+ }
+
+ @media (max-width: 720px) {
+     .problem-selector__content h3[data-problem-title] {
+         font-size: clamp(1.65rem, 8vw, 2.45rem);
+     }
+ }
+
+ @media (max-width: 420px) {
+     .problem-selector__content h3[data-problem-title] {
+         font-size: clamp(1.55rem, 7.6vw, 2.15rem);
+     }
+ }
