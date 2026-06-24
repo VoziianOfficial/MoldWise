@@ -735,7 +735,7 @@
 .home-trust__corner {
     position: absolute;
     right: 1%;
-    bottom: 5%;
+    bottom: 2%;
     width: 92px;
     height: 92px;
     border-right: 3px solid var(--color-accent-green);
