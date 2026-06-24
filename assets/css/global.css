@@ -203,7 +203,8 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(2.35rem, 5vw, 4.9rem);
+    font-size: clamp(2.1rem, 4.15vw, 4.25rem);
+    max-width: 1040px;
 }
 
 h2 {
@@ -1088,13 +1089,13 @@ p {
 }
 
 .shared-hero__content {
-    width: min(calc(100% - 40px), 900px);
+    width: min(calc(100% - 40px), 1080px);
     margin-inline: auto;
     text-align: center;
 }
 
 .shared-hero__content h1 {
-    max-width: 850px;
+    max-width: 1040px;
     margin-inline: auto;
     text-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
 }
@@ -1869,7 +1870,7 @@ p {
     }
 
     .shared-hero__content h1 {
-        font-size: clamp(2.15rem, 11vw, 3.1rem);
+            font-size: clamp(1.95rem, 9.4vw, 2.8rem);
     }
 
     .shared-hero__content p {
