@@ -31,10 +31,14 @@
 
 .service-overview__photo {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     height: clamp(330px, 38vw, 560px);
-    margin-top: clamp(30px, 5vw, 56px);
+    margin: clamp(30px, 5vw, 56px) 0 0;
     border: 1px solid rgba(24, 38, 51, 0.14);
     box-shadow: var(--shadow-medium);
+    justify-self: stretch;
+    align-self: stretch;
 }
 
 .service-overview__photo::after {
@@ -312,10 +316,14 @@
 
 .service-process__photo {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     height: clamp(260px, 27vw, 380px);
-    margin-top: 28px;
+    margin: 28px 0 0;
     border: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow: var(--shadow-strong);
+    justify-self: stretch;
+    align-self: stretch;
 }
 
 .service-process__photo::after {
@@ -1098,16 +1106,55 @@
  @media (max-width: 1080px) {
      .service-compare-checklist__grid {
          grid-template-columns: 1fr;
+         gap: 28px;
      }
 
      .service-compare-checklist__intro {
+         width: 100%;
+         max-width: 100%;
          max-width: 860px;
+         margin-inline: auto;
+         text-align: center;
      }
 
      .service-compare-checklist__lines {
          width: 100%;
          max-width: 900px;
          justify-self: center;
+         min-width: 0;
+     }
+ }
+
+ @media (max-width: 900px) {
+     .service-compare-checklist__intro h2 {
+         max-width: 100%;
+         font-size: clamp(1.85rem, 5.8vw, 2.8rem);
+     }
+
+     .service-compare-checklist__intro p:not(.section-kicker) {
+         max-width: 100%;
+         font-size: 1rem;
+     }
+
+     .service-compare-checklist__line,
+     .service-compare-checklist__line.is-active {
+         width: 100%;
+         max-width: 100%;
+         min-width: 0;
+         grid-template-columns: minmax(96px, 0.32fr) minmax(0, 1fr) auto;
+         gap: 14px 20px;
+         padding: 18px 0;
+     }
+
+     .service-compare-checklist__line h3,
+     .service-compare-checklist__line p {
+         max-width: 100%;
+     }
+
+     .service-compare-checklist__line > i,
+     .service-compare-checklist__line > svg {
+         width: 48px;
+         height: 48px;
      }
  }
 
@@ -1115,7 +1162,76 @@
 
      .service-compare-checklist__line,
      .service-compare-checklist__line.is-active {
+         grid-template-columns: 1fr auto;
+         align-items: start;
          padding-left: 0;
+     }
+
+     .service-compare-checklist__label,
+     .service-compare-checklist__line div {
+         grid-column: 1 / 2;
+         min-width: 0;
+     }
+
+     .service-compare-checklist__line > i,
+     .service-compare-checklist__line > svg {
+         grid-column: 2 / 3;
+         grid-row: 1 / 3;
+         justify-self: end;
+         align-self: start;
+         width: 44px;
+         height: 44px;
+     }
+
+     .service-compare-checklist__line h3 {
+         font-size: 1.1rem;
+     }
+
+     .service-compare-checklist__line p {
+         font-size: 0.92rem;
+         line-height: 1.55;
+     }
+ }
+
+ @media (max-width: 560px) {
+     .service-compare-checklist__grid {
+         gap: 22px;
+     }
+
+     .service-compare-checklist__intro {
+         text-align: left;
+     }
+
+     .service-compare-checklist__intro h2,
+     .service-compare-checklist__intro p:not(.section-kicker) {
+         margin-inline: 0;
+         max-width: 100%;
+     }
+
+     .service-compare-checklist__line,
+     .service-compare-checklist__line.is-active {
+         grid-template-columns: 1fr;
+         gap: 12px;
+         padding: 18px 0;
+     }
+
+     .service-compare-checklist__line > i,
+     .service-compare-checklist__line > svg {
+         grid-column: auto;
+         grid-row: auto;
+         justify-self: start;
+         order: -1;
+         width: 40px;
+         height: 40px;
+     }
+
+     .service-compare-checklist__line h3::after {
+         width: 34px;
+     }
+
+     .service-compare-checklist__line.is-active h3::after,
+     .service-compare-checklist__line:hover h3::after {
+         width: 72px;
      }
  }
 
@@ -1176,8 +1292,10 @@
   .service-process__photo--wide {
       grid-column: 1 / -1;
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
       height: clamp(260px, 25vw, 360px);
-      margin-top: clamp(8px, 2vw, 20px);
+      margin: clamp(8px, 2vw, 20px) 0 0;
       border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.16);
       box-shadow: var(--shadow-strong);
@@ -1187,6 +1305,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      transform-origin: center center;
   }
 
   .service-process__photo--wide::after {
