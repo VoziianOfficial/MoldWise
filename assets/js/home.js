@@ -65,6 +65,7 @@
             app.refreshIcons();
 
             concernPanel.classList.remove('is-changing');
+            app.refreshAos();
         }, 120);
     }
 
@@ -163,7 +164,6 @@
         initHomeCardMotion();
 
         app.refreshIcons();
-        app.refreshAos();
     }
 
     if (document.readyState === 'loading') {

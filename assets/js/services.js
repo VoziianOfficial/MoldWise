@@ -73,9 +73,6 @@
                     init() {
                         app.refreshIcons();
                         app.refreshAos();
-                    },
-                    slideChangeTransitionEnd() {
-                        app.refreshAos();
                     }
                 }
             });
@@ -207,7 +204,6 @@
         initServiceImageLoading();
 
         app.refreshIcons();
-        app.refreshAos();
     }
 
     if (document.readyState === 'loading') {

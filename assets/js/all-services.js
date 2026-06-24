@@ -78,6 +78,7 @@
             app.refreshIcons();
 
             problemPanel.classList.remove('is-changing');
+            app.refreshAos();
         }, 140);
     }
 
@@ -163,7 +164,6 @@
         initServiceGridMotion();
 
         app.refreshIcons();
-        app.refreshAos();
     }
 
     if (document.readyState === 'loading') {

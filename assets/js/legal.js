@@ -145,7 +145,6 @@
         initExternalLegalLinks();
 
         app.refreshIcons();
-        app.refreshAos();
     }
 
     if (document.readyState === 'loading') {

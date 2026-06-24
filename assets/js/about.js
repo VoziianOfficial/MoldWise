@@ -112,9 +112,8 @@
                 icon.setAttribute('data-lucide', item.icon);
             }
 
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
+            app.refreshIcons();
+            app.refreshAos();
         };
 
         tabs.forEach((tab) => {
@@ -160,14 +159,8 @@
             },
             on: {
                 init() {
-                    if (window.lucide) {
-                        window.lucide.createIcons();
-                    }
-                },
-                slideChangeTransitionEnd() {
-                    if (window.lucide) {
-                        window.lucide.createIcons();
-                    }
+                    app.refreshIcons();
+                    app.refreshAos();
                 }
             }
         });
@@ -178,7 +171,6 @@
         initAboutHoverMotion();
 
         app.refreshIcons();
-        app.refreshAos();
     }
 
     if (document.readyState === 'loading') {

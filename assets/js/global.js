@@ -32,6 +32,8 @@
         dropdownTimer: null
     };
 
+    let aosRefreshTimer = null;
+
     /* ==================================================
        Helpers
        ================================================== */
@@ -133,12 +135,14 @@
         }
     }
 
-    function refreshAos() {
-        if (window.AOS && typeof window.AOS.refreshHard === 'function') {
-            window.setTimeout(() => window.AOS.refreshHard(), 120);
-        } else if (window.AOS && typeof window.AOS.refresh === 'function') {
-            window.setTimeout(() => window.AOS.refresh(), 120);
-        }
+    function refreshAos(delay = 180) {
+        if (!window.AOS || typeof window.AOS.refresh !== 'function') return;
+
+        window.clearTimeout(aosRefreshTimer);
+
+        aosRefreshTimer = window.setTimeout(() => {
+            window.AOS.refresh();
+        }, delay);
     }
 
     /* ==================================================
@@ -434,7 +438,7 @@
         const ctaHtml = `
             <section class="final-cta-section" aria-labelledby="final-cta-title">
                 <div class="container-wide">
-                    <div class="final-cta shine-surface">
+                    <div class="final-cta shine-surface" data-aos="zoom-in">
                         <div class="final-cta__content">
                             <p class="section-kicker">Start with clarity</p>
 
@@ -802,6 +806,8 @@
                     item.classList.remove('is-open');
                     trigger.setAttribute('aria-expanded', 'false');
                 }
+
+                refreshAos();
             });
         });
     }
@@ -886,16 +892,23 @@
     function initLibraries() {
         if (window.AOS && typeof window.AOS.init === 'function') {
             window.AOS.init({
-                duration: 760,
+                duration: 1050,
                 easing: 'ease-out-cubic',
                 once: true,
-                offset: 72,
+                mirror: false,
+                offset: 90,
                 delay: 0,
                 anchorPlacement: 'top-bottom'
             });
         }
 
         refreshIcons();
+
+        if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+            document.fonts.ready.then(() => {
+                refreshAos();
+            });
+        }
 
         window.addEventListener('load', () => {
             refreshIcons();
