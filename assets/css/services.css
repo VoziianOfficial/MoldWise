@@ -1119,9 +1119,7 @@
      }
  }
 
-  /* ==================================================
-   Service Process — compact cards + wide bottom photo
-   ================================================== */
+  
 
   .service-process__grid--wide-photo {
       grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);

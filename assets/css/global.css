@@ -1061,7 +1061,7 @@ p {
     position: absolute;
     inset: 0;
     z-index: -2;
-    background: rgba(0, 0, 0, 0.56);
+    background: rgba(0, 0, 0, 0.54);
 }
 
 .shared-hero__content {
@@ -1073,14 +1073,19 @@ p {
 .shared-hero__content h1 {
     max-width: 1040px;
     margin-inline: auto;
+    color: #FFFFFF;
     text-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
 }
 
 .shared-hero__content p {
     max-width: 910px;
     margin: 20px auto 0;
-    color: var(--color-text-soft);
+    color: rgba(247, 250, 249, 0.92);
     font-size: clamp(1.02rem, 1.4vw, 1.22rem);
+}
+
+.shared-hero .section-kicker--light {
+    color: #EAF7F2;
 }
 
 .shared-hero__actions {
@@ -1098,7 +1103,7 @@ p {
     max-width: none;
     margin-top: 22px;
     margin-inline: auto;
-    color: var(--color-accent-green-soft);
+    color: #F2FBF7;
     font-size: 0.86rem;
     font-weight: 700;
     white-space: nowrap;

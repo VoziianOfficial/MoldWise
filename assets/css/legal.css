@@ -54,8 +54,12 @@
 .legal-hero p:not(.section-kicker) {
     max-width: 760px;
     margin-top: 18px;
-    color: var(--color-text-soft);
+    color: rgba(247, 250, 249, 0.9);
     font-size: clamp(1rem, 1.3vw, 1.16rem);
+}
+
+.legal-hero .section-kicker--light {
+    color: #EAF7F2;
 }
 
 .legal-hero__meta {
@@ -72,8 +76,8 @@
     padding: 10px 14px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: var(--radius-pill);
-    color: var(--color-text-soft);
-    background: rgba(16, 26, 36, 0.72);
+    color: rgba(247, 250, 249, 0.9);
+    background: rgba(16, 26, 36, 0.58);
     box-shadow: var(--shadow-soft);
 }
 
