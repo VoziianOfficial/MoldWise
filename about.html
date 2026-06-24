@@ -203,147 +203,95 @@
             </div>
         </section>
 
-        <section class="about-compare section section--milk" id="compare-providers"
-            aria-labelledby="compare-providers-title">
+        <section class="about-lens section section--light" id="comparison-lens" aria-labelledby="comparison-lens-title">
             <div class="container-wide">
-                <div class="about-compare__grid">
-                    <div class="about-compare__content" data-aos="fade-right">
-                        <p class="section-kicker">Why compare providers</p>
-
-                        <h2 id="compare-providers-title">
-                            The same concern can lead to different provider approaches
-                        </h2>
-
-                        <p>
-                            Comparing options helps you ask better questions before continuing. Look beyond one detail
-                            and review the full provider conversation.
-                        </p>
-
-                        <ul class="about-compare__list" aria-label="Provider comparison topics">
-                            <li>
-                                <i data-lucide="file-check-2" aria-hidden="true"></i>
-                                <span>Scope of work</span>
-                            </li>
-                            <li>
-                                <i data-lucide="flask-conical" aria-hidden="true"></i>
-                                <span>Testing approach</span>
-                            </li>
-                            <li>
-                                <i data-lucide="droplets" aria-hidden="true"></i>
-                                <span>Moisture source discussion</span>
-                            </li>
-                            <li>
-                                <i data-lucide="calendar-check" aria-hidden="true"></i>
-                                <span>Availability</span>
-                            </li>
-                            <li>
-                                <i data-lucide="receipt-text" aria-hidden="true"></i>
-                                <span>Pricing terms</span>
-                            </li>
-                            <li>
-                                <i data-lucide="shield-check" aria-hidden="true"></i>
-                                <span>Warranty and provider terms</span>
-                            </li>
-                        </ul>
+                <div class="about-lens__head" data-aos="fade-up">
+                    <p class="section-kicker">Comparison lens</p>
+        
+                    <h2 id="comparison-lens-title">
+                        Compare the same request from different angles
+                    </h2>
+                </div>
+        
+                <div class="about-lens__layout">
+                    <div class="about-lens__tabs" role="tablist" aria-label="Comparison angles" data-aos="fade-right">
+                        <button class="about-lens__tab is-active" type="button" role="tab" aria-selected="true"
+                            data-lens-tab="0">
+                            <span>
+                                <strong>Scope</strong>
+                                <small>What is included?</small>
+                            </span>
+                            <i data-lucide="file-check-2" aria-hidden="true"></i>
+                        </button>
+        
+                        <button class="about-lens__tab" type="button" role="tab" aria-selected="false" data-lens-tab="1">
+                            <span>
+                                <strong>Moisture</strong>
+                                <small>What caused it?</small>
+                            </span>
+                            <i data-lucide="droplets" aria-hidden="true"></i>
+                        </button>
+        
+                        <button class="about-lens__tab" type="button" role="tab" aria-selected="false" data-lens-tab="2">
+                            <span>
+                                <strong>Testing</strong>
+                                <small>Is more info needed?</small>
+                            </span>
+                            <i data-lucide="flask-conical" aria-hidden="true"></i>
+                        </button>
+        
+                        <button class="about-lens__tab" type="button" role="tab" aria-selected="false" data-lens-tab="3">
+                            <span>
+                                <strong>Terms</strong>
+                                <small>What should be verified?</small>
+                            </span>
+                            <i data-lucide="shield-check" aria-hidden="true"></i>
+                        </button>
                     </div>
-
-                    <div class="about-compare__slider-wrap" data-aos="fade-left">
-                        <div class="swiper about-compare__swiper" data-compare-swiper>
-                            <div class="swiper-wrapper">
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="file-check-2"></i>
-                                    </span>
-
-                                    <h3>Scope of work</h3>
-
-                                    <p>
-                                        Ask what the provider says is included, what is not included, and what may
-                                        change after an on-site discussion.
-                                    </p>
-                                </article>
-
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="flask-conical"></i>
-                                    </span>
-
-                                    <h3>Testing approach</h3>
-
-                                    <p>
-                                        If testing is part of the conversation, compare how each provider explains
-                                        testing type, reporting, timing, and cost.
-                                    </p>
-                                </article>
-
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="droplets"></i>
-                                    </span>
-
-                                    <h3>Moisture source discussion</h3>
-
-                                    <p>
-                                        Mold-related concerns often connect to moisture. Ask how providers discuss
-                                        leaks, humidity, ventilation, or recurring dampness.
-                                    </p>
-                                </article>
-
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="calendar-check"></i>
-                                    </span>
-
-                                    <h3>Availability</h3>
-
-                                    <p>
-                                        Availability can vary by location, provider, season, and requested service
-                                        category.
-                                    </p>
-                                </article>
-
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="receipt-text"></i>
-                                    </span>
-
-                                    <h3>Pricing terms</h3>
-
-                                    <p>
-                                        Ask how pricing is structured, what details are estimated, and what is confirmed
-                                        directly by the provider.
-                                    </p>
-                                </article>
-
-                                <article class="swiper-slide about-compare__slide card">
-                                    <span class="card-icon" aria-hidden="true">
-                                        <i data-lucide="shield-check"></i>
-                                    </span>
-
-                                    <h3>Warranty and provider terms</h3>
-
-                                    <p>
-                                        Review provider terms carefully and verify licensing, insurance, and warranty
-                                        details where required.
-                                    </p>
-                                </article>
+        
+                    <article class="about-lens__panel" role="tabpanel" data-lens-panel data-aos="fade-left">
+                        <div class="about-lens__panel-bg" aria-hidden="true"></div>
+                        <span class="about-lens__overlay" aria-hidden="true"></span>
+        
+                        <div class="about-lens__panel-content">
+                            <span class="about-lens__eyebrow" data-lens-eyebrow>
+                                Scope comparison
+                            </span>
+        
+                            <h3 data-lens-title>
+                                Ask what is included before comparing prices
+                            </h3>
+        
+                            <p data-lens-text>
+                                Two providers may describe the same mold-related concern differently. Ask what is included,
+                                what is excluded, and what may change after an on-site conversation.
+                            </p>
+        
+                            <div class="about-lens__note">
+                                <i data-lucide="badge-info" aria-hidden="true"></i>
+                                <span data-lens-note>
+                                    MoldWise helps organize the comparison. Participating providers handle final scope and
+                                    terms.
+                                </span>
+                            </div>
+        
+                            <div class="about-lens__actions">
+                                <a href="contact.html" class="btn btn--primary">
+                                    <span>Start a Request</span>
+                                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                                </a>
+        
+                                <a href="all-services.html" class="btn btn--outline">
+                                    <span>View Services</span>
+                                    <i data-lucide="layers-3" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
-
-                        <div class="about-compare__controls" aria-label="Provider comparison slider controls">
-                            <button class="about-compare__arrow" type="button" aria-label="Previous comparison topic"
-                                data-compare-prev>
-                                <i data-lucide="arrow-left" aria-hidden="true"></i>
-                            </button>
-
-                            <div class="about-compare__pagination" data-compare-pagination></div>
-
-                            <button class="about-compare__arrow" type="button" aria-label="Next comparison topic"
-                                data-compare-next>
-                                <i data-lucide="arrow-right" aria-hidden="true"></i>
-                            </button>
+        
+                        <div class="about-lens__panel-icon" aria-hidden="true">
+                            <i data-lucide="file-check-2" data-lens-icon></i>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
