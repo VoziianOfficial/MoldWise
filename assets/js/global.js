@@ -580,7 +580,7 @@
         });
 
         document.querySelectorAll(SELECTORS.serviceOptions).forEach((select) => {
-            const firstLabel = select.getAttribute('data-placeholder') || 'Select service category';
+            const firstLabel = select.getAttribute('data-placeholder') || 'Select category';
 
             select.innerHTML = `
                 <option value="">${safeText(firstLabel)}</option>
