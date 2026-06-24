@@ -1114,17 +1114,26 @@ p {
 
 .hero-clarifier {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: max-content;
+    max-width: none;
     margin-top: 22px;
+    margin-inline: auto;
     color: var(--color-accent-green-soft);
     font-size: 0.86rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .hero-clarifier svg {
-    width: 17px;
-    height: 17px;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: 1px;
 }
 
 .hero-wave {
@@ -1892,7 +1901,6 @@ p {
     .hero-clarifier {
         align-items: flex-start;
         justify-content: center;
-        max-width: 330px;
         margin-inline: auto;
     }
 
@@ -1997,4 +2005,3 @@ p {
         transition-duration: 0.001ms !important;
     }
 }
-
