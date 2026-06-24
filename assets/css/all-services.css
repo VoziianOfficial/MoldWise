@@ -852,3 +852,28 @@
         opacity: 0.62;
     }
 }
+
+/* Fix hover clipping in problem selector tabs */
+.problem-selector,
+.problem-selector .container-wide,
+.problem-selector__tabs {
+    overflow: visible;
+}
+
+.problem-selector__tabs {
+    position: relative;
+    z-index: 3;
+    padding: 12px 10px 18px;
+    margin: -12px -10px 18px;
+}
+
+.problem-selector__tab {
+    position: relative;
+    z-index: 1;
+    transform-origin: center;
+}
+
+.problem-selector__tab:hover,
+.problem-selector__tab.is-active {
+    z-index: 4;
+}
