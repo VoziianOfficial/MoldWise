@@ -1220,6 +1220,17 @@
 
 @media (max-width: 1180px) {
 
+    .home-platform__content,
+    .home-platform__cards {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .home-platform__media {
+        margin-left: 0;
+    }
+
     .home-platform__content h2,
     .home-platform__content>p:not(.section-kicker) {
         width: 100%;

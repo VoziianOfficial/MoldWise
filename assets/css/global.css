@@ -1136,6 +1136,10 @@ p {
     margin-top: 1px;
 }
 
+.hero-clarifier span {
+    min-width: 0;
+}
+
 .hero-wave {
     position: absolute;
     left: 0;
@@ -1804,6 +1808,14 @@ p {
         width: min(calc(100% - 34px), 820px);
     }
 
+    .hero-clarifier {
+        display: flex;
+        width: min(100%, 720px);
+        max-width: 100%;
+        white-space: normal;
+        text-align: left;
+    }
+
     .final-cta {
         grid-template-columns: 1fr;
     }
@@ -1901,6 +1913,7 @@ p {
     .hero-clarifier {
         align-items: flex-start;
         justify-content: center;
+        width: 100%;
         margin-inline: auto;
     }
 
