@@ -521,6 +521,274 @@
         });
     }
 
+    /* ==================================================
+   Universal Config Injection
+   Change brand/contact/company data only in config.js
+   ================================================== */
+
+    function getConfigValue(path, fallback = '') {
+        const value = getNestedValue(config, path);
+        return value === undefined || value === null || value === '' ? fallback : String(value);
+    }
+
+    function buildGlobalConfigValues() {
+        return {
+            brandName: getConfigValue('brand.name', 'MoldWise'),
+            brandTagline: getConfigValue('brand.tagline', 'Independent Mold Remediation Provider Matching'),
+
+            companyName: getConfigValue('company.name', getConfigValue('brand.name', 'MoldWise')),
+            companyLegalName: getConfigValue('company.legalName', getConfigValue('company.name', 'MoldWise')),
+            companyId: getConfigValue('company.companyId', 'MW-MOLD-2048'),
+            companyAddress: getConfigValue('company.address', 'USA Service Area'),
+            serviceArea: getConfigValue('company.serviceArea', ''),
+
+            phoneRaw: getConfigValue('contact.phoneRaw', '+18885550148'),
+            phoneDisplay: getConfigValue('contact.phoneDisplay', '(888) 555-0148'),
+            phoneButtonText: getConfigValue('contact.phoneButtonText', 'Start Request'),
+            email: getConfigValue('contact.email', 'hello@moldwise.com'),
+            supportHours: getConfigValue('contact.supportHours', 'Mon–Fri, 8:00 AM–7:00 PM'),
+
+            disclaimer: getConfigValue('legal.disclaimer', '')
+        };
+    }
+
+    function getConfigMapHref(address) {
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address || '')}`;
+    }
+
+    /**
+     * Replaces old hardcoded project values across text nodes and common attributes.
+     * This lets you change name/email/phone/address in config.js without editing HTML.
+     */
+    function replaceHardcodedConfigValues(root = document) {
+        const values = buildGlobalConfigValues();
+
+        const replacements = [
+            ['MoldWise', values.brandName],
+            ['Independent Mold Remediation Provider Matching', values.brandTagline],
+            ['MW-MOLD-2048', values.companyId],
+            ['USA Service Area', values.companyAddress],
+            ['Independent mold remediation provider matching across selected service areas', values.serviceArea],
+            ['hello@moldwise.com', values.email],
+            ['+18885550148', values.phoneRaw],
+            ['(888) 555-0148', values.phoneDisplay],
+            ['Mon–Fri, 8:00 AM–7:00 PM', values.supportHours]
+        ].filter(([, next]) => next !== undefined && next !== null && String(next).trim() !== '');
+
+        function replaceString(source) {
+            if (!source || typeof source !== 'string') return source;
+
+            return replacements.reduce((output, [oldValue, newValue]) => {
+                if (!oldValue || oldValue === newValue) return output;
+
+                return output.split(oldValue).join(newValue);
+            }, source);
+        }
+
+        const skipTags = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'IFRAME', 'SVG', 'PATH']);
+
+        const walker = document.createTreeWalker(
+            root.body || root,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode(node) {
+                    const parent = node.parentElement;
+
+                    if (!parent || skipTags.has(parent.tagName)) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+
+                    if (!node.nodeValue || !node.nodeValue.trim()) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
+        const textNodes = [];
+
+        while (walker.nextNode()) {
+            textNodes.push(walker.currentNode);
+        }
+
+        textNodes.forEach((node) => {
+            node.nodeValue = replaceString(node.nodeValue);
+        });
+
+        const attrNames = [
+            'title',
+            'alt',
+            'aria-label',
+            'placeholder',
+            'value',
+            'content'
+        ];
+
+        root.querySelectorAll('*').forEach((element) => {
+            attrNames.forEach((attrName) => {
+                if (element.hasAttribute(attrName)) {
+                    element.setAttribute(attrName, replaceString(element.getAttribute(attrName)));
+                }
+            });
+        });
+
+        if (document.title) {
+            document.title = replaceString(document.title);
+        }
+
+        document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"]').forEach((meta) => {
+            const content = meta.getAttribute('content');
+
+            if (content) {
+                meta.setAttribute('content', replaceString(content));
+            }
+        });
+    }
+
+    /**
+     * Supports both styles:
+     * 1) Universal data-config="contact.email"
+     * 2) Your existing shortcuts like data-config-email, data-config-phone-link, etc.
+     */
+    function injectUniversalConfigFields(root = document) {
+        const values = buildGlobalConfigValues();
+
+        /* Universal path-based injection */
+        root.querySelectorAll('[data-config]').forEach((node) => {
+            const path = node.getAttribute('data-config');
+            const attr = node.getAttribute('data-config-attr');
+            const prefix = node.getAttribute('data-config-prefix') || '';
+            const suffix = node.getAttribute('data-config-suffix') || '';
+            const value = getConfigValue(path);
+            const output = `${prefix}${value}${suffix}`;
+
+            if (attr) {
+                node.setAttribute(attr, output);
+            } else {
+                node.textContent = output;
+            }
+        });
+
+        /* Text shortcuts */
+        root.querySelectorAll('[data-config-brand], [data-brand-name]').forEach((node) => {
+            node.textContent = values.brandName;
+        });
+
+        root.querySelectorAll('[data-config-company], [data-company-name]').forEach((node) => {
+            node.textContent = values.companyName;
+        });
+
+        root.querySelectorAll('[data-config-legal-name], [data-company-legal-name]').forEach((node) => {
+            node.textContent = values.companyLegalName;
+        });
+
+        root.querySelectorAll('[data-config-company-id], [data-company-id]').forEach((node) => {
+            node.textContent = values.companyId;
+        });
+
+        root.querySelectorAll('[data-config-email], [data-email]').forEach((node) => {
+            node.textContent = values.email;
+        });
+
+        root.querySelectorAll('[data-config-phone-display], [data-phone-display]').forEach((node) => {
+            node.textContent = values.phoneDisplay;
+        });
+
+        root.querySelectorAll('[data-config-phone-raw], [data-phone-raw]').forEach((node) => {
+            node.textContent = values.phoneRaw;
+        });
+
+        root.querySelectorAll('[data-config-address], [data-address]').forEach((node) => {
+            node.textContent = values.companyAddress;
+        });
+
+        root.querySelectorAll('[data-config-service-area], [data-service-area]').forEach((node) => {
+            node.textContent = values.serviceArea;
+        });
+
+        root.querySelectorAll('[data-config-support-hours], [data-support-hours]').forEach((node) => {
+            node.textContent = values.supportHours;
+        });
+
+        root.querySelectorAll('[data-config-disclaimer], [data-disclaimer]').forEach((node) => {
+            node.textContent = values.disclaimer;
+        });
+
+        /* Link shortcuts */
+        root.querySelectorAll('[data-config-email-link], [data-email-link], a[href^="mailto:"]').forEach((link) => {
+            link.setAttribute('href', `mailto:${values.email}`);
+
+            if (!link.textContent.trim() || link.hasAttribute('data-config-email-link') || link.hasAttribute('data-email-link')) {
+                const textTarget = link.querySelector('[data-config-email], [data-email]');
+
+                if (textTarget) {
+                    textTarget.textContent = values.email;
+                } else if (!link.querySelector('svg, i')) {
+                    link.textContent = values.email;
+                }
+            }
+        });
+
+        root.querySelectorAll('[data-config-phone-link], [data-phone-link], a[href^="tel:"]').forEach((link) => {
+            link.setAttribute('href', `tel:${values.phoneRaw}`);
+
+            if (!link.textContent.trim() || link.hasAttribute('data-config-phone-link') || link.hasAttribute('data-phone-link')) {
+                const textTarget = link.querySelector('[data-config-phone-display], [data-phone-display]');
+
+                if (textTarget) {
+                    textTarget.textContent = values.phoneDisplay;
+                } else if (!link.querySelector('svg, i')) {
+                    link.textContent = values.phoneDisplay;
+                }
+            }
+        });
+
+        root.querySelectorAll('[data-config-address-link], [data-map-link], a[href*="google.com/maps"]').forEach((link) => {
+            link.setAttribute('href', getConfigMapHref(values.companyAddress));
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
+
+            const textTarget = link.querySelector('[data-config-address], [data-address]');
+
+            if (textTarget) {
+                textTarget.textContent = values.companyAddress;
+            }
+        });
+
+        /* Header/logo aria labels and image alt */
+        root.querySelectorAll('.site-logo').forEach((logo) => {
+            logo.setAttribute('aria-label', `${values.brandName} home`);
+        });
+
+        root.querySelectorAll('.site-logo img, .site-footer__logo img').forEach((img) => {
+            img.setAttribute('alt', `${values.brandName} logo`);
+        });
+
+        /* Form hidden/source values if present */
+        root.querySelectorAll('input[name="sourcePage"]').forEach((input) => {
+            if (!input.value.trim()) {
+                input.value = `${values.brandName} website form`;
+            }
+        });
+    }
+
+    /**
+     * One public function for the whole website.
+     * Call after header/footer/CTA are built.
+     */
+    function applySiteConfigEverywhere() {
+        injectUniversalConfigFields(document);
+        replaceHardcodedConfigValues(document);
+
+        refreshIcons();
+
+        if (typeof refreshAos === 'function') {
+            refreshAos(120);
+        }
+    }
+
     
 
     function buildServiceDropdownLink(service) {
@@ -900,7 +1168,11 @@
         injectFaqSchema,
         getCurrentPage,
         isServicePage,
-        closeMobileMenu
+        closeMobileMenu,
+
+        applySiteConfigEverywhere,
+        injectUniversalConfigFields,
+        replaceHardcodedConfigValues,
     };
 
     
@@ -923,6 +1195,8 @@
         initGlobalAccordions();
         initSmoothAnchors();
         initLibraries();
+
+        applySiteConfigEverywhere();
     }
 
     if (document.readyState === 'loading') {
