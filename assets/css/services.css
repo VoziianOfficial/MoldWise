@@ -1,25 +1,12 @@
-/* ==================================================
-   MoldWise — Individual Service Pages Styles
-   Shared by:
-   mold-remediation.html
-   mold-inspection.html
-   mold-testing.html
-   black-mold-concerns.html
-   basement-mold-help.html
-   moisture-mold-prevention.html
-   ================================================== */
 
-/* ==================================================
-   Shared Service Hero
-   ================================================== */
+
+
 
 .shared-hero--service {
     --hero-wave-fill: var(--color-milk);
 }
 
-/* ==================================================
-   Service Overview / Common Situations
-   ================================================== */
+
 
 .service-overview {
     position: relative;
@@ -172,9 +159,7 @@
     color: var(--color-accent-green-dark);
 }
 
-/* ==================================================
-   Signs / Factors With Alternating Photos
-   ================================================== */
+
 
 .service-factors {
     overflow: hidden;
@@ -270,9 +255,7 @@
     transform: translateY(-2px) rotate(-5deg);
 }
 
-/* ==================================================
-   Matching / Provider Comparison Process
-   ================================================== */
+
 
 .service-process {
     position: relative;
@@ -339,9 +322,7 @@
     background: rgba(0, 0, 0, 0.18);
 }
 
-/* ==================================================
-   Related Services + FAQ Swiper
-   ================================================== */
+
 
 .service-related {
     position: relative;
@@ -453,9 +434,7 @@
     transform: translateY(-4px) rotate(-7deg);
 }
 
-/* ==================================================
-   FAQ Swiper
-   ================================================== */
+
 
 .service-faq-swiper-wrap {
     position: relative;
@@ -614,9 +593,7 @@
     background: var(--color-accent-green-dark);
 }
 
-/* ==================================================
-   Motion Hooks
-   ================================================== */
+
 
 .service-overview__photo,
 .service-factors__photo,
@@ -628,9 +605,7 @@
     will-change: transform;
 }
 
-/* ==================================================
-   Responsive
-   ================================================== */
+
 
 @media (max-width: 1120px) {
     .service-overview__actions {

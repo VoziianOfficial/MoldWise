@@ -2,24 +2,13 @@
 
 declare(strict_types=1);
 
-/*
-|--------------------------------------------------------------------------
-| MoldWise Contact Form Endpoint
-|--------------------------------------------------------------------------
-| Editable recipient email must match assets/js/config.js:
-| config.contact.email / config.form.recipient
-|--------------------------------------------------------------------------
-*/
+
 
 $recipientEmail = 'hello@moldwise.com';
 $siteName = 'MoldWise';
 $subjectPrefix = 'New MoldWise Request';
 
-/*
-|--------------------------------------------------------------------------
-| JSON Response Helper
-|--------------------------------------------------------------------------
-*/
+
 
 function respond_json(bool $success, string $message, int $statusCode = 200): void
 {
@@ -36,21 +25,13 @@ function respond_json(bool $success, string $message, int $statusCode = 200): vo
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Request Method Check
-|--------------------------------------------------------------------------
-*/
+
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond_json(false, 'Invalid request method.', 405);
 }
 
-/*
-|--------------------------------------------------------------------------
-| Sanitization Helpers
-|--------------------------------------------------------------------------
-*/
+
 
 function clean_text(?string $value, int $maxLength = 1000): string
 {
@@ -83,11 +64,7 @@ function has_header_injection(string $value): bool
     return (bool) preg_match('/[\r\n]/', $value);
 }
 
-/*
-|--------------------------------------------------------------------------
-| Honeypot Anti-Spam
-|--------------------------------------------------------------------------
-*/
+
 
 $honeypot = clean_text($_POST['website'] ?? '', 200);
 
@@ -95,11 +72,7 @@ if ($honeypot !== '') {
     respond_json(true, 'Thank you. Your request has been received.');
 }
 
-/*
-|--------------------------------------------------------------------------
-| Collect Fields
-|--------------------------------------------------------------------------
-*/
+
 
 $fullName = clean_text($_POST['fullName'] ?? '', 120);
 $email = clean_text($_POST['email'] ?? '', 180);
@@ -109,11 +82,7 @@ $message = clean_multiline($_POST['message'] ?? '', 4000);
 $sourcePage = clean_text($_POST['sourcePage'] ?? 'MoldWise contact form', 220);
 $privacyConsent = isset($_POST['privacyConsent']) ? 'Yes' : '';
 
-/*
-|--------------------------------------------------------------------------
-| Validation
-|--------------------------------------------------------------------------
-*/
+
 
 $allowedServices = [
     'Mold Remediation',
@@ -156,11 +125,7 @@ if (!filter_var($recipientEmail, FILTER_VALIDATE_EMAIL)) {
     respond_json(false, 'The form is not configured correctly. Please contact the site owner.', 500);
 }
 
-/*
-|--------------------------------------------------------------------------
-| Build Email
-|--------------------------------------------------------------------------
-*/
+
 
 $submittedAt = date('Y-m-d H:i:s');
 $userIp = $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
@@ -207,11 +172,7 @@ $headers = [
     'X-Mailer: PHP/' . phpversion(),
 ];
 
-/*
-|--------------------------------------------------------------------------
-| Send Email
-|--------------------------------------------------------------------------
-*/
+
 
 $mailSent = @mail(
     $recipientEmail,

@@ -1,19 +1,12 @@
-/* ==================================================
-   MoldWise — Contact Page Styles
-   Only Contact page-specific sections.
-   ================================================== */
 
-/* ==================================================
-   Hero
-   ================================================== */
+
+
 
 .shared-hero--contact {
     --hero-wave-fill: var(--color-milk);
 }
 
-/* ==================================================
-   Quick Category / Contact Cards
-   ================================================== */
+
 
 .contact-categories {
     overflow: hidden;
@@ -62,9 +55,7 @@
     align-self: start;
 }
 
-/* ==================================================
-   What Happens Next
-   ================================================== */
+
 
 .contact-next {
     overflow: hidden;
@@ -217,9 +208,7 @@
     font-size: 0.95rem;
 }
 
-/* ==================================================
-   Compact Working Form Section
-   ================================================== */
+
 
 .contact-form-section {
     position: relative;
@@ -357,9 +346,7 @@
     transform: none;
 }
 
-/* ==================================================
-   Contact FAQ
-   ================================================== */
+
 
 .contact-faq {
     overflow: hidden;
@@ -414,9 +401,7 @@
     padding-left: 56px;
 }
 
-/* ==================================================
-   Responsive
-   ================================================== */
+
 
 @media (max-width: 1180px) {
     .contact-categories__grid {
@@ -749,7 +734,7 @@
 }
 
 
-/* Contact next section — wider photo to the left */
+
 @media (min-width: 981px) {
     .contact-next {
         overflow: hidden;
@@ -821,10 +806,7 @@
     }
 }
 
-/* ==================================================
-   Contact Service Icon Strip
-   No heading, no text, no card backgrounds
-   ================================================== */
+
 
 .contact-service-icons {
     width: 100%;

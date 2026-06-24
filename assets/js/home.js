@@ -1,12 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — Homepage JavaScript
-   Homepage-specific interactions only:
-   Quick Mold Concern dynamic panel,
-   homepage FAQ schema,
-   homepage refresh helpers.
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;

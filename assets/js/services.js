@@ -1,11 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — Individual Service Pages JavaScript
-   Shared by all service detail pages:
-   FAQ Swiper, FAQ schema, anchor behavior,
-   hover/motion helpers.
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;

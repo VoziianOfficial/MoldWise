@@ -1,19 +1,12 @@
-/* ==================================================
-   MoldWise — All Services Page Styles
-   Only All Services page-specific sections.
-   ================================================== */
 
-/* ==================================================
-   Hero
-   ================================================== */
+
+
 
 .shared-hero--services {
     --hero-wave-fill: var(--color-milk);
 }
 
-/* ==================================================
-   Mold Issue / Situation Guide
-   ================================================== */
+
 
 .services-guide {
     overflow: hidden;
@@ -185,9 +178,7 @@
     font-weight: 800;
 }
 
-/* ==================================================
-   Service Category Overview — No Gap Grid
-   ================================================== */
+
 
 .services-overview {
     display: grid;
@@ -374,9 +365,7 @@
     font-weight: 800;
 }
 
-/* ==================================================
-   Compare Provider Options Section
-   ================================================== */
+
 
 .services-compare {
     overflow: hidden;
@@ -488,9 +477,7 @@
     margin-inline: auto;
 }
 
-/* ==================================================
-   Interactive Problem Selector
-   ================================================== */
+
 
 .problem-selector {
     overflow: hidden;
@@ -673,9 +660,7 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ==================================================
-   Responsive
-   ================================================== */
+
 
 @media (max-width: 1180px) {
     .services-overview {
@@ -853,7 +838,7 @@
     }
 }
 
-/* Fix hover clipping in problem selector tabs */
+
 .problem-selector,
 .problem-selector .container-wide,
 .problem-selector__tabs {
@@ -878,10 +863,7 @@
     z-index: 4;
 }
 
-/* ==================================================
-   Request Details Lines
-   No cards, no card-in-card, clean horizontal info rail
-   ================================================== */
+
 
 .services-request-lines {
     position: relative;
@@ -1075,9 +1057,7 @@
     }
 }
 
- /* ==================================================
-   Problem Selector — section background layout, not card
-   ================================================== */
+ 
 
  .problem-selector {
      position: relative;
@@ -1101,7 +1081,7 @@
      z-index: 2;
  }
 
- /* убираем вид карточки у dynamic panel */
+ 
  .problem-selector__panel.shine-surface,
  .problem-selector__panel {
      position: relative;
@@ -1122,7 +1102,7 @@
          transform var(--transition-base);
  }
 
- /* отключаем shine/карточный эффект, если он приходит от global */
+ 
  .problem-selector__panel.shine-surface::before,
  .problem-selector__panel.shine-surface::after {
      display: none;
@@ -1137,7 +1117,7 @@
      transform: translateY(6px);
  }
 
- /* контент как часть секции */
+ 
  .problem-selector__content {
      position: relative;
      min-width: 0;
@@ -1203,7 +1183,7 @@
      font-size: clamp(1rem, 1.1vw, 1.08rem);
  }
 
- /* detail/next теперь не карточки, а строки на фоне секции */
+ 
  .problem-selector__detail,
  .problem-selector__next {
      width: min(100%, 720px);
@@ -1224,7 +1204,7 @@
      color: rgba(247, 250, 249, 0.72);
  }
 
- /* фото тоже не карточка: просто визуальный пласт внутри секции */
+ 
  .problem-selector__photo {
      position: relative;
      min-height: clamp(420px, 42vw, 620px);
@@ -1267,14 +1247,14 @@
      transform: scale(1.08);
  }
 
- /* кнопки-табы пусть остаются сверху и листаются */
+ 
  .problem-selector__tabs {
      position: relative;
      z-index: 5;
      margin-bottom: clamp(18px, 3vw, 34px);
  }
 
- /* адаптив */
+ 
  @media (max-width: 1180px) {
 
      .problem-selector__panel.shine-surface,

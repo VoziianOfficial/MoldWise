@@ -1,11 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — All Services Page JavaScript
-   All Services-specific interactions only:
-   Interactive Problem Selector,
-   page-specific refresh helpers.
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;

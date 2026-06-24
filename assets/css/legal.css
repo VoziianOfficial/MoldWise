@@ -1,14 +1,6 @@
-/* ==================================================
-   MoldWise — Legal Pages Styles
-   Shared by:
-   privacy-policy.html
-   terms-of-service.html
-   cookie-policy.html
-   ================================================== */
 
-/* ==================================================
-   Legal Hero
-   ================================================== */
+
+
 
 .legal-hero {
     position: relative;
@@ -97,9 +89,7 @@
     font-weight: 700;
 }
 
-/* ==================================================
-   Legal Layout
-   ================================================== */
+
 
 .legal-content {
     overflow: visible;
@@ -112,9 +102,7 @@
     align-items: start;
 }
 
-/* ==================================================
-   Sidebar
-   ================================================== */
+
 
 .legal-sidebar {
     position: sticky;
@@ -216,9 +204,7 @@
     font-size: 0.92rem;
 }
 
-/* ==================================================
-   Legal Article
-   ================================================== */
+
 
 .legal-article {
     position: relative;
@@ -317,9 +303,7 @@
     color: var(--color-primary-deep);
 }
 
-/* ==================================================
-   Legal Contact Card
-   ================================================== */
+
 
 .legal-contact-card {
     display: grid;
@@ -404,9 +388,7 @@
     line-height: 1.35;
 }
 
-/* ==================================================
-   Disclaimer Block
-   ================================================== */
+
 
 .legal-disclaimer-block {
     padding: clamp(22px, 3vw, 34px);
@@ -425,9 +407,7 @@
     font-size: 0.96rem;
 }
 
-/* ==================================================
-   Responsive
-   ================================================== */
+
 
 @media (max-width: 1080px) {
     .legal-layout {
@@ -554,9 +534,7 @@
     }
 }
 
- /* ==================================================
-   Legal pages — juicier premium accents
-   ================================================== */
+ 
 
  .legal-hero {
      background: #050607;
@@ -706,11 +684,9 @@
      box-shadow: 0 0 16px rgba(143, 191, 174, 0.34);
  }
 
-  /* ==================================================
-   Legal pages — stronger hover effects
-   ================================================== */
+  
 
-  /* Hero meta pills */
+  
   .legal-hero__meta span {
       transition:
           transform var(--transition-base),
@@ -734,7 +710,7 @@
       filter: drop-shadow(0 0 16px rgba(255, 190, 120, 0.44));
   }
 
-  /* Sidebar nav */
+  
   .legal-nav a {
       transition:
           color var(--transition-base),
@@ -760,7 +736,7 @@
       box-shadow: 0 0 16px rgba(232, 168, 111, 0.34);
   }
 
-  /* Mini legal card */
+  
   .legal-mini-card {
       transition:
           transform var(--transition-base),
@@ -784,7 +760,7 @@
       filter: drop-shadow(0 0 18px rgba(255, 190, 120, 0.42));
   }
 
-  /* Article sections hover */
+  
   .legal-article section {
       transition:
           transform var(--transition-base),
@@ -819,7 +795,7 @@
       box-shadow: 0 0 18px rgba(143, 191, 174, 0.36);
   }
 
-  /* List hover */
+  
   .legal-article li {
       transition:
           padding var(--transition-base),
@@ -846,7 +822,7 @@
           0 0 18px rgba(232, 168, 111, 0.38);
   }
 
-  /* Contact cards */
+  
   .legal-contact-card a,
   .legal-contact-card>span {
       transition:
@@ -882,7 +858,7 @@
       transform: translateY(-5px) rotate(-8deg) scale(1.08);
   }
 
-  /* Disclaimer hover */
+  
   .legal-disclaimer-block {
       transition:
           transform var(--transition-base),

@@ -1,19 +1,12 @@
-/* ==================================================
-   MoldWise — About Page Styles
-   Only About page-specific sections.
-   ================================================== */
 
-/* ==================================================
-   Hero
-   ================================================== */
+
+
 
 .shared-hero--about {
     --hero-wave-fill: var(--color-white);
 }
 
-/* ==================================================
-   Platform Mission
-   ================================================== */
+
 
 .about-mission {
     overflow: hidden;
@@ -110,9 +103,7 @@
     border-top-color: transparent;
 }
 
-/* ==================================================
-   How MoldWise Helps Homeowners
-   ================================================== */
+
 
 .about-help {
     overflow: hidden;
@@ -164,9 +155,7 @@
     align-self: start;
 }
 
-/* ==================================================
-   Why Compare Providers
-   ================================================== */
+
 
 .about-compare {
     overflow: hidden;
@@ -352,9 +341,7 @@
     opacity: 1;
 }
 
-/* ==================================================
-   About FAQ
-   ================================================== */
+
 
 .about-faq {
     overflow: hidden;
@@ -413,9 +400,7 @@
     padding-left: 56px;
 }
 
-/* ==================================================
-   Responsive
-   ================================================== */
+
 
 @media (max-width: 1180px) {
     .about-help__cards {
@@ -564,9 +549,7 @@
     }
 }
 
-/* ==================================================
-   Fix: photo only inside each about compare slide
-   ================================================== */
+
 
 .about-compare__slider-wrap {
     position: relative;
@@ -747,10 +730,7 @@
     }
 }
 
-/* ==================================================
-   About Comparison Lens
-   Low horizontal interactive section
-   ================================================== */
+
 
 .about-lens {
     position: relative;
@@ -1258,10 +1238,7 @@
 }
 
 
-/* ==================================================
-   Clean Popular Mold Problems Swiper
-   Photo card + text card, exactly 2 visible on desktop
-   ================================================== */
+
 
 .about-problems-strip {
     width: 100%;

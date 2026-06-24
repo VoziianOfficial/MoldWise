@@ -1,11 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — About Page JavaScript
-   About-specific interactions only:
-   About FAQ schema,
-   refresh helpers.
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;

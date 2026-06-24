@@ -1,12 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — Global JavaScript
-   Shared behavior only:
-   config injection, header/footer build, dropdown,
-   mobile menu, cookie banner, AOS, Lucide,
-   accordions, shared CTA, service links.
-   ================================================== */
+
 
 (function () {
     const config = window.SiteConfig || {};
@@ -34,9 +28,7 @@
 
     let aosRefreshTimer = null;
 
-    /* ==================================================
-       Helpers
-       ================================================== */
+    
 
     function getCurrentPage() {
         const path = window.location.pathname.split('/').pop();
@@ -145,9 +137,7 @@
         }, delay);
     }
 
-    /* ==================================================
-       Header Build
-       ================================================== */
+    
 
     function buildHeader() {
         const mounts = document.querySelectorAll(SELECTORS.headerMount);
@@ -309,9 +299,7 @@
         });
     }
 
-    /* ==================================================
-       Footer Build
-       ================================================== */
+    
 
     function buildFooter() {
         const mounts = document.querySelectorAll(SELECTORS.footerMount);
@@ -426,9 +414,7 @@
         });
     }
 
-    /* ==================================================
-       Shared Final CTA Build
-       ================================================== */
+    
 
     function buildSharedCta() {
         const mounts = document.querySelectorAll(SELECTORS.sharedCtaMount);
@@ -476,9 +462,7 @@
         });
     }
 
-    /* ==================================================
-       Config Injection
-       ================================================== */
+    
 
     function injectConfigText() {
         const nodes = document.querySelectorAll(SELECTORS.configText);
@@ -537,9 +521,7 @@
         });
     }
 
-    /* ==================================================
-       Service Link Injection
-       ================================================== */
+    
 
     function buildServiceDropdownLink(service) {
         return `
@@ -595,9 +577,7 @@
         });
     }
 
-    /* ==================================================
-       Header Behavior
-       ================================================== */
+    
 
     function initStickyHeader() {
         const header = document.querySelector('[data-header]');
@@ -698,9 +678,7 @@
         });
     }
 
-    /* ==================================================
-       Cookie Consent
-       ================================================== */
+    
 
     function createCookieBanner() {
         if (document.querySelector(SELECTORS.cookieBanner)) return;
@@ -761,9 +739,7 @@
         decline.addEventListener('click', () => setChoice('declined'));
     }
 
-    /* ==================================================
-       Accordion Helper
-       ================================================== */
+    
 
     function initAccordion(root, options = {}) {
         if (!root) return;
@@ -820,9 +796,7 @@
         });
     }
 
-    /* ==================================================
-       FAQ Schema Helper
-       ================================================== */
+    
 
     function injectFaqSchema(faqs, id = 'faq-schema') {
         if (!Array.isArray(faqs) || !faqs.length) return;
@@ -853,9 +827,7 @@
         document.head.appendChild(script);
     }
 
-    /* ==================================================
-       Smooth Same-Page Scroll
-       ================================================== */
+    
 
     function initSmoothAnchors() {
         document.addEventListener('click', (event) => {
@@ -885,9 +857,7 @@
         });
     }
 
-    /* ==================================================
-       Library Initialization
-       ================================================== */
+    
 
     function initLibraries() {
         if (window.AOS && typeof window.AOS.init === 'function') {
@@ -916,9 +886,7 @@
         });
     }
 
-    /* ==================================================
-       Public API
-       ================================================== */
+    
 
     window.MoldWise = {
         config,
@@ -935,9 +903,7 @@
         closeMobileMenu
     };
 
-    /* ==================================================
-       Init
-       ================================================== */
+    
 
     function init() {
         buildHeader();

@@ -1,12 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — Legal Pages JavaScript
-   Shared by:
-   privacy-policy.html
-   terms-of-service.html
-   cookie-policy.html
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;

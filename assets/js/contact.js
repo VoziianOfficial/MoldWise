@@ -1,12 +1,6 @@
 'use strict';
 
-/* ==================================================
-   MoldWise — Contact Page JavaScript
-   Contact-specific interactions only:
-   form validation, AJAX submission,
-   category cards → form select,
-   contact FAQ schema.
-   ================================================== */
+
 
 (function () {
     const app = window.MoldWise;
