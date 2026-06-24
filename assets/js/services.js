@@ -190,6 +190,57 @@
         });
     }
 
+    (function initServiceCompareChecklist() {
+        const sections = document.querySelectorAll('.service-compare-checklist');
+
+        sections.forEach((section) => {
+            const intro = section.querySelector('[data-compare-intro]');
+            const title = section.querySelector('[data-compare-title]');
+            const text = section.querySelector('[data-compare-text]');
+            const lines = Array.from(section.querySelectorAll('[data-compare-line]'));
+
+            if (!intro || !title || !text || !lines.length) return;
+
+            function setActiveLine(activeLine) {
+                const nextTitle = activeLine.getAttribute('data-intro-title');
+                const nextText = activeLine.getAttribute('data-intro-text');
+
+                if (!nextTitle || !nextText) return;
+
+                lines.forEach((line) => {
+                    line.classList.toggle('is-active', line === activeLine);
+                });
+
+                intro.classList.add('is-changing');
+
+                window.setTimeout(() => {
+                    title.textContent = nextTitle;
+                    text.textContent = nextText;
+                    intro.classList.remove('is-changing');
+
+                    if (window.MoldWise && typeof window.MoldWise.refreshAos === 'function') {
+                        window.MoldWise.refreshAos();
+                    }
+                }, 140);
+            }
+
+            lines.forEach((line) => {
+                line.addEventListener('click', () => {
+                    setActiveLine(line);
+                });
+
+                line.addEventListener('mouseenter', () => {
+                    if (window.matchMedia('(hover: hover)').matches) {
+                        setActiveLine(line);
+                    }
+                });
+            });
+
+            const firstActive = section.querySelector('.service-compare-checklist__line.is-active') || lines[0];
+            setActiveLine(firstActive);
+        });
+    })();
+
     function init() {
         initCurrentServiceMeta();
         initServiceFaqSwiper();
