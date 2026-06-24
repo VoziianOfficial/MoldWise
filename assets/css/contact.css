@@ -820,3 +820,196 @@
         max-width: 680px;
     }
 }
+
+/* ==================================================
+   Contact Service Icon Strip
+   No heading, no text, no card backgrounds
+   ================================================== */
+
+.contact-service-icons {
+    width: 100%;
+    padding: clamp(26px, 3.5vw, 44px) 0;
+    background: var(--color-primary-deep);
+    overflow: hidden;
+}
+
+.contact-service-icons__track {
+    width: min(calc(100% - 34px), 1320px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.contact-service-icons__item {
+    position: relative;
+    min-height: clamp(96px, 9vw, 132px);
+    display: grid;
+    place-items: center;
+    color: rgba(247, 250, 249, 0.72);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    transition:
+        color var(--transition-base),
+        transform var(--transition-base);
+}
+
+.contact-service-icons__item:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.contact-service-icons__item::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 20px;
+    height: 2px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-green);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-base);
+}
+
+.contact-service-icons__item::after {
+    content: "";
+    position: absolute;
+    inset: auto 28px 14px 28px;
+    height: 1px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-orange);
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity var(--transition-base),
+        transform var(--transition-base);
+}
+
+.contact-service-icons__item:hover {
+    color: var(--color-accent-orange);
+    transform: translateY(-5px);
+}
+
+.contact-service-icons__item:hover::before {
+    transform: scaleX(1);
+}
+
+.contact-service-icons__item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-service-icons__item svg,
+.contact-service-icons__item [data-lucide] {
+    width: clamp(46px, 5.8vw, 82px);
+    height: clamp(46px, 5.8vw, 82px);
+    stroke-width: 1.15;
+    transition:
+        transform var(--transition-base),
+        color var(--transition-base),
+        filter var(--transition-base);
+}
+
+.contact-service-icons__item:hover svg,
+.contact-service-icons__item:hover [data-lucide] {
+    transform: rotate(-7deg) scale(1.08);
+    filter: drop-shadow(0 18px 26px rgba(232, 168, 111, 0.22));
+}
+
+.contact-service-icons__item:nth-child(even)::before {
+    background: var(--color-accent-orange);
+}
+
+.contact-service-icons__item:nth-child(even):hover {
+    color: var(--color-accent-green);
+}
+
+@media (max-width: 820px) {
+    .contact-service-icons__track {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+    }
+
+    .contact-service-icons__track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .contact-service-icons__item {
+        flex: 0 0 34%;
+        min-height: 110px;
+        scroll-snap-align: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-service-icons__item {
+        flex-basis: 42%;
+        min-height: 96px;
+    }
+
+    .contact-service-icons__item svg,
+    .contact-service-icons__item [data-lucide] {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+.contact-service-icons__item:nth-child(1) {
+    color: #8FBFAE;
+}
+
+.contact-service-icons__item:nth-child(2) {
+    color: #9DB7C7;
+}
+
+.contact-service-icons__item:nth-child(3) {
+    color: #E8A86F;
+}
+
+.contact-service-icons__item:nth-child(4) {
+    color: #B7DCCF;
+}
+
+.contact-service-icons__item:nth-child(5) {
+    color: #7FA4B8;
+}
+
+.contact-service-icons__item:nth-child(6) {
+    color: #DFA46E;
+}
+
+.contact-service-icons__item:nth-child(1)::before,
+.contact-service-icons__item:nth-child(4)::before {
+    background: #8FBFAE;
+}
+
+.contact-service-icons__item:nth-child(2)::before,
+.contact-service-icons__item:nth-child(5)::before {
+    background: #9DB7C7;
+}
+
+.contact-service-icons__item:nth-child(3)::before,
+.contact-service-icons__item:nth-child(6)::before {
+    background: #E8A86F;
+}
+
+.contact-service-icons__item svg,
+.contact-service-icons__item [data-lucide] {
+    opacity: 0.86;
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.18));
+}
+
+.contact-service-icons__item:hover {
+    color: var(--color-text-light);
+}
+
+.contact-service-icons__item:hover svg,
+.contact-service-icons__item:hover [data-lucide] {
+    opacity: 1;
+    filter: drop-shadow(0 20px 32px rgba(232, 168, 111, 0.28));
+}
